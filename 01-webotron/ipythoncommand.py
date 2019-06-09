@@ -1,3 +1,4 @@
 # coding: utf-8
 import boto3
-s3 = boto3.resource('s3')
+session = boto3.Session(profile_name = 'JPNEW')
+s3 = session.resource('s3')
