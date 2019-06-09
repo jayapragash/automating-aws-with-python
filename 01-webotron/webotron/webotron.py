@@ -75,10 +75,10 @@ def setup_bucket(bucket):
 
 def upload_file(s3_bucket, path, key):
     content_type = mimetypes.guess_type(key)[0] or "text/plain"
-    s3_bucket.upload_file(path,key,ExtraArgs={'ContentType':'text/html'})
-
-
-
+    s3_bucket.upload_file(path,
+    key,
+    ExtraArgs={'ContentType':'text/html'}
+    )
 
 @cli.command('sync')
 @click.argument("pathname",type=click.Path(exists=True))
@@ -90,7 +90,7 @@ def sync(pathname,bucket):
     def handler_directory(target):
         for p in target.iterdir():
             if p.is_dir(): handler_directory(p)
-            if p.is_file(): upload_file(s3bucket,str(p),str(p.relative_to(root)))
+            if p.is_file(): upload_file(s3bucket,str(p), str(p.relative_to(root)).replace("\\","/"))
     handler_directory(root)
 
 
