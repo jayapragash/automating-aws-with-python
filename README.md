@@ -10,6 +10,7 @@ Webotron is a script that will sync a local directory to an s3 bucket, and confi
 
 Webotron currently has the following Features:
 
--List buckets
--List Contents of a Bucket
--Create and Setup Bucket 
+- List buckets
+- List Contents of a Bucket
+- Create and Setup Bucket
+- Sync Directory Tree to S3
