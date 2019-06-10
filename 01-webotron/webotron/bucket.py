@@ -7,7 +7,7 @@ import boto3
 from pathlib import Path
 import mimetypes
 from botocore.exceptions import ClientError
-import util
+from webotron import util
 from hashlib import md5
 from functools import reduce
 

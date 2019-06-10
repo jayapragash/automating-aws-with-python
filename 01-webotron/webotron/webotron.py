@@ -15,11 +15,12 @@ Webotron automates the process of deploying static websites to AWS
 import boto3
 from botocore.exceptions import ClientError
 import click
-from domain import DomainManager
-import util
-from bucket import BucketManager
-from certificate import CertificateManager
-from cdn import DistributionManager
+
+from webotron.domain import DomainManager
+from webotron.bucket import BucketManager
+from webotron.certificate import CertificateManager
+from webotron.cdn import DistributionManager
+from webotron import util
 
 session = None
 bucket_manager = None
