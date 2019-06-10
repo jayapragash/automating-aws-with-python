@@ -23,6 +23,12 @@ class BucketManager:
         )
         self.manifest = {}
 
+
+    def get_bucket(self, bucket_name):
+        """Get a bucket by name."""
+        return self.s3.Bucket(bucket_name)
+
+
     def get_region_name(self, bucket):
         """Get the bucket's region name."""
         client = self.s3.meta.client
@@ -106,7 +112,6 @@ class BucketManager:
         })
 
 
-
     def upload_file(self,bucket, path, key):
         """Upload Path to S3_Bucket at key."""
         content_type = mimetypes.guess_type(key)[0] or "text/plain"
@@ -125,29 +130,6 @@ class BucketManager:
         hash = md5()
         hash.update(data)
         return hash
-
-
-
-    # def gen_etag(self, path):
-    #     """Generate etag for file."""
-    #     hashes = []
-    #
-    #     with open(path, 'rb') as f:
-    #         while True:
-    #             data = f.read(self.CHUNK_SIZE)
-    #
-    #             if not data:
-    #                 break
-    #
-    #             hashes.append(self.hash_data(data))
-    #
-    #     if not hashes:
-    #         return
-    #     elif len(hashes) == 1:
-    #         return '"{}"'.format(hashes[0].hexdigest())
-    #     else:
-    #         hash = self.hash_data(reduce(lambda x, y: x + y, (h.digest() for h in hashes)))
-    #         return '"{}-{}"'.format(hash.hexdigest(), len(hashes))
 
 
     def gen_etag(self, path):
