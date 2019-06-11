@@ -6,7 +6,7 @@ Repo for the automating python project
 
 Webotron is a script that will sync a local directory to an s3 bucket, and configure Route 53
 
-## Features
+### Features
 
 Webotron currently has the following Features:
 
@@ -18,3 +18,11 @@ Webotron currently has the following Features:
 - Configure route 53 domain
 - Configure Cloud Front Distribution
 - Provided SSL Certificate for the site
+
+## 02-notifon
+
+Notifon is a project to notify Slack Users of changes to your AWS account using CloudWatch events
+
+### Features
+
+Notifon currently has the following Features:
