@@ -1,3 +1,4 @@
+config.dev.json
 *.pem
 *.ppk
 # Byte-compiled / optimized / DLL files
