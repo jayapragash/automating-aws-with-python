@@ -1,0 +1,18 @@
+service: videolyzer # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: python3.7
+  profile: ${file(../config.${self:provider.stage}.json):videolyzer.profile}
+  region: us-east-2
+
+
+functions:
+  StartProcessingVideo:
+    handler: handler.start_processing_video
+    events:
+      - s3:
+          bucket: ${file(../config.${self:provider.stage}.json):videolyzer.video_bucket}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .mp4
